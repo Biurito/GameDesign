@@ -6,11 +6,19 @@
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
-  <speed>30</speed>
+  <speed>60</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.hat=0
+  <code>enum states
+{
+    normal
+}
+
+
+
+
+global.hat=0
 global.deck=2
 global.dir=0;
 

@@ -26,15 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>///initialize
+state = states.normal;
 hsp=0;
 vsp=0;
-m_speed=5;
+m_speed=2;
 time=0;
+global.dir = -1;
+jump = 10;
+drag = 0.5;
+grav = 0.5;
 image_speed=0
 image_index=0
 view_visible[0]=true;
 view_visible[1]=false;
 baloon=0
+globalvar allowmove;
+allowmove = true;
+
 </string>
           </argument>
         </arguments>
@@ -108,50 +116,34 @@ global.maxcard=10
             <kind>1</kind>
             <string>///player movement
 
-//deklaracje
-if(global.hp&lt;=0)
+if (allowmove)
 {
-instance_destroy();
-}
-key_left=keyboard_check(vk_left); 
-key_right=keyboard_check(vk_right);
-key_up=keyboard_check_pressed(vk_up);
-if(key_right-key_left != 0 ) {
-  global.dir = key_right-key_left;
-}
-hsp=(key_right-key_left)*m_speed;
-//kolizja na boki
-if (place_meeting(x+hsp,y,obj_wall)){
-  while(!place_meeting(x+sign(hsp),y,obj_wall)){
-    x+=sign(hsp);
-  }
-  hsp=0
-}
+    if(global.hp&lt;=0)
+    {
+        instance_destroy();
+    }
+    switch (state)
+    {
+        case states.normal:
+        {
+            scr_getinput();
+            //kierunek spirtea
+            scr_player_direction();
 
-else{
-  x+=hsp;
-}
-//kolizja gora dol
-if(place_meeting(x,y+1,obj_wall)){
-  vsp-=key_up*20
-}
-vsp+=2
-if (place_meeting(x,y+vsp,obj_wall)){
-  while(!place_meeting(x,y+sign(vsp),obj_wall)){
-    y+=sign(vsp);
-  }
-  vsp=0
-}
-else{
-  y+=vsp;
-}
-if global.dir=1
-{
-image_index=0
-}
-else
-{
-image_index=1
+            //movement
+            scr_player_normal();
+            scr_player_collision();
+            break;
+        }
+    }
+    if global.dir=1
+    {
+    image_index=0
+    }
+    else
+    {
+    image_index=1
+    }
 }
 
 
@@ -177,23 +169,25 @@ image_index=1
           <argument>
             <kind>1</kind>
             <string>///strzelanie
-if keyboard_check_pressed(vk_space)
+if (allowmove)
 {
-  if global.cards&gt;0
-  {
-  global.cards-=1;
-  card = instance_create(x,y,obj_karta);
-  if(global.dir&gt;=0)
-  {
-    card.dir = 1
-  }
-  else
-  {
-    card.dir=0
-  }
-  
-  }
-  
+    if keyboard_check_pressed(vk_space)
+    {
+    if global.cards&gt;0
+    {
+        global.cards-=1;
+        card = instance_create(x,y,obj_karta);
+        if(global.dir&gt;=0)
+        {
+            card.dir = 1
+        }
+        else
+        {
+            card.dir=0
+        }
+
+    }
+    }
 }
 
 </string>

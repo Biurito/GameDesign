@@ -26,10 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>///initialize
+state = states.normal;
 hsp=0;
 vsp=0;
-m_speed=7;
+m_speed=3;
 time=0;
+jump = 13;
+drag = 0.5;
+grav = 0.5;
 image_speed=0
 image_index=0
 view_visible[0]=false; 
@@ -58,50 +62,27 @@ view_visible[1]=true;
             <kind>1</kind>
             <string>///bunny movement
 
-//deklaracje
-if(global.hp&lt;=0)
+if (allowmove)
 {
-instance_destroy();
-}
-key_left=keyboard_check(vk_left); 
-key_right=keyboard_check(vk_right);
-key_up=keyboard_check_pressed(vk_up);
-if(key_right-key_left != 0 ) {
-  global.dir = key_right-key_left;
-}
-hsp=(key_right-key_left)*m_speed;
-//kolizja na boki
-if (place_meeting(x+hsp,y,obj_wall)){
-  while(!place_meeting(x+sign(hsp),y,obj_wall)){
-    x+=sign(hsp);
-  }
-  hsp=0
-}
+    if(global.hp&lt;=0)
+    {
+        instance_destroy();
+    }
+    switch (state)
+    {
+        case states.normal:
+        {
+            scr_getinput();
+            //kierunek spirtea
+            scr_bunny_direction();
 
-else{
-  x+=hsp;
-}
-//kolizja gora dol
-if(place_meeting(x,y+1,obj_wall)){
-  vsp-=key_up*15
-}
-vsp+=1
-if (place_meeting(x,y+vsp,obj_wall)){
-  while(!place_meeting(x,y+sign(vsp),obj_wall)){
-    y+=sign(vsp);
-  }
-  vsp=0
-}
-else{
-  y+=vsp;
-}
-if global.dir=1
-{
-image_index=0
-}
-else
-{
-image_index=1
+            //movement
+            scr_player_normal();
+            scr_player_collision();
+            break;
+        }
+    }
+
 }
 
 

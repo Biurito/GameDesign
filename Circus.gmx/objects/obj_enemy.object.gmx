@@ -55,13 +55,13 @@ count=0
 //dead
 if ( other.hp &lt;= 0 ) with ( other ) instance_destroy();
  //move
-if count&lt;=54
+if count&lt;=108
  {
  image_index=0
  x+=4
  count+=1
  }
-else if count&gt;=110
+else if count&gt;=220
  {
  count=0
  }

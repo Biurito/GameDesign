@@ -91,11 +91,46 @@ if distance_to_object(obj_char)&gt; 10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.inf2=1&amp;&amp;k=0
+            <string>if (global.inf2 == 1 &amp;&amp; k == 0)
 {
-k=1
+    k=1
+    allowmove = false;
+}
+if (k == 1)
+{
+    allomove = true;
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>613</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>allowmove</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>30</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>30</string>
           </argument>
         </arguments>
       </action>
@@ -124,6 +159,10 @@ if k=1
  draw_sprite(spr_hat,global.hat+click,x,y-191)
  draw_sprite(spr_deck,global.deck+klik,x-30,y-150)
  }
+else
+{
+    allowmove = true;
+}
 </string>
           </argument>
         </arguments>

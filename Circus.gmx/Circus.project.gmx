@@ -53,24 +53,43 @@
   </paths>
   <scripts name="scripts">
     <script>scripts\script0.gml</script>
+    <scripts name="Player">
+      <script>scripts\scr_getinput.gml</script>
+      <script>scripts\scr_player_collision.gml</script>
+      <script>scripts\scr_player_direction.gml</script>
+      <script>scripts\scr_player_normal.gml</script>
+      <scripts name="Bunny">
+        <script>scripts\scr_bunny_direction.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\karty</font>
     <font>fonts\info</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_char</object>
+    <objects name="Player">
+      <object>objects\obj_char</object>
+      <object>objects\obj_bunny</object>
+    </objects>
     <object>objects\obj_karta</object>
     <object>objects\obj_wall</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_boss</object>
-    <object>objects\obj_excl</object>
-    <object>objects\obj_enemy_fly</object>
+    <objects name="Enemies">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_enemy_fly</object>
+      <object>objects\obj_enemy_cyb</object>
+    </objects>
+    <objects name="NPC">
+      <object>objects\obj_boss</object>
+      <object>objects\obj_excl</object>
+    </objects>
     <object>objects\obj_beam</object>
-    <object>objects\obj_cyb</object>
-    <object>objects\obj_bunny</object>
     <object>objects\hat_col</object>
-    <object>objects\obj_box</object>
+    <objects name="Misc">
+      <object>objects\obj_box</object>
+      <object>objects\obj_bubble</object>
+      <object>objects\baloo</object>
+    </objects>
     <objects name="tilez">
       <object>objects\obj_grup</object>
       <object>objects\obj_grdo</object>
@@ -78,15 +97,13 @@
       <object>objects\obj_rope</object>
       <object>objects\obj_table</object>
     </objects>
-    <object>objects\obj_bubble</object>
     <object>objects\obj_bgstory</object>
-    <object>objects\baloo</object>
     <object>objects\obj_marker</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room2</room>
     <room>rooms\intro</room>
     <room>rooms\story</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
