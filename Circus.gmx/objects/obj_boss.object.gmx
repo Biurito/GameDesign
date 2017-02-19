@@ -99,7 +99,8 @@ if dis!=1
             <kind>1</kind>
             <string>draw_set_color(c_black);
 draw_set_font(info);
-if k==1
+ 
+ if k==1
 {
 draw_sprite(textm_spr,0,200,100);
 draw_sprite(spr_dyr_face,0,200,100);
@@ -124,6 +125,7 @@ draw_sprite(spr_dyr_face,0,200,100);
   draw_text(425,265,"Just get to the decent height,aim, and")
   draw_text(425,295,"shot on spacebar. Remember, when")
   draw_text(425,325,"you shoot number of cards decreases.")
+  
   if t=0{
   var buble1 = instance_create (ds_list_find_value(global.markers, 0).x,500,obj_bubble);
   with (buble1) {

@@ -32,14 +32,19 @@ vsp=0;
 m_speed=2;
 time=0;
 global.dir = -1;
-jump = 10;
+grav_bonus=0;
+
+jump = 14;
 drag = 0.5;
-grav = 0.5;
+grav = 1;
+
 image_speed=0
 image_index=0
 view_visible[0]=true;
 view_visible[1]=false;
+
 baloon=0
+
 globalvar allowmove;
 allowmove = true;
 
@@ -241,7 +246,42 @@ time=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x+hsp,y,obj_enemy)){
+            <string>///grav_bonus + counters
+if global.Q1_0=1
+{
+  grav_bonus=-0.2
+}
+else
+{
+  grav_bonus=0
+}
+
+if baloon&gt;=3
+{
+ global.Q1_0=3
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///collision
+if (place_meeting(x+hsp,y,obj_enemy)){
   while(!place_meeting(x+sign(hsp),y,obj_enemy)){
     x+=sign(hsp);
   }
@@ -357,30 +397,6 @@ if keyboard_check(ord("Z")) &amp;&amp; global.hat=2 &amp;&amp; global.cards&gt;0
     time=0
     }
   }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if baloon&gt;=3
-{
- global.Q1_0=3
-}
 </string>
           </argument>
         </arguments>
