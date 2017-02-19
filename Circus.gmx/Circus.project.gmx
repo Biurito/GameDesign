@@ -41,6 +41,7 @@
     <sprite>sprites\spr_baloo</sprite>
     <sprite>sprites\textm_spr</sprite>
     <sprite>sprites\spr_table</sprite>
+    <sprite>sprites\spr_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\circus</background>
@@ -62,10 +63,13 @@
         <script>scripts\scr_bunny_direction.gml</script>
       </scripts>
     </scripts>
+    <script>scripts\scr_exit_game.gml</script>
+    <script>scripts\scr_start_game.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\karty</font>
     <font>fonts\info</font>
+    <font>fonts\fn_menu</font>
   </fonts>
   <objects name="objects">
     <objects name="Player">
@@ -99,11 +103,16 @@
     </objects>
     <object>objects\obj_bgstory</object>
     <object>objects\obj_marker</object>
+    <object>objects\par_button</object>
+    <object>objects\obj_start_button</object>
+    <object>objects\obj_exit_button</object>
+    <object>objects\obj_pause</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\intro</room>
+    <room>rooms\rm_mainmenu</room>
+    <room>rooms\rm_intro</room>
+    <room>rooms\rm_outside</room>
     <room>rooms\story</room>
-    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

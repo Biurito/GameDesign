@@ -47,7 +47,7 @@ baloon=0
 
 globalvar allowmove;
 allowmove = true;
-
+side = ""
 </string>
           </argument>
         </arguments>
@@ -120,7 +120,14 @@ global.maxcard=10
           <argument>
             <kind>1</kind>
             <string>///player movement
-
+if (obj_char.x &gt; (room_width / 2))
+{
+    side = "right";
+}
+else if (obj_char.x &lt; (room_width / 2))
+{
+    side = "left";
+}
 if (allowmove)
 {
     if(global.hp&lt;=0)
@@ -422,19 +429,21 @@ if keyboard_check(ord("Z")) &amp;&amp; global.hat=2 &amp;&amp; global.cards&gt;0
             <string>///room changing
 
 
-if (obj_char.x &gt; (room_width / 2))
+if (side == "right")
 {
     if (room_exists(room_next(room)))
     {
-        room_goto_next();
+        room_goto(room_next(1));
+        //obj_char.x = 15;
     }
+        
+    
 }
-else if (obj_char.x &lt; (room_width / 2))
+if (side == "left")
 {
-    if (room_exists(room_previous(room)))
-    {
-        room_goto_previous();
-    }
+    
+        room_goto(story);
+    
 }
 </string>
           </argument>
@@ -532,6 +541,62 @@ with (spr_hat) {image_xscale=-1}
  }
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>613</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>10</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-20</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>613</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>-1</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>room_width / 2</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-100</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-20</string>
           </argument>
         </arguments>
       </action>
