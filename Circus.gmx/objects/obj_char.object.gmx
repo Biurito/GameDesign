@@ -402,6 +402,45 @@ if keyboard_check(ord("Z")) &amp;&amp; global.hat=2 &amp;&amp; global.cards&gt;0
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///room changing
+
+
+if (obj_char.x &gt; (room_width / 2))
+{
+    if (room_exists(room_next(room)))
+    {
+        room_goto_next();
+    }
+}
+else if (obj_char.x &lt; (room_width / 2))
+{
+    if (room_exists(room_previous(room)))
+    {
+        room_goto_previous();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
