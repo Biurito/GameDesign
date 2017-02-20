@@ -11,3 +11,12 @@ if (keyboard_check_pressed(ord("D")))
     global.dir = 1;
 }
 
+ if global.dir=1
+  {
+  image_xscale=1
+  }
+ else if global.dir=-1
+  {
+   image_xscale=-1
+  } 
+

@@ -48,6 +48,7 @@ baloon=0
 globalvar allowmove;
 allowmove = true;
 side = ""
+a=0
 </string>
           </argument>
         </arguments>
@@ -148,18 +149,79 @@ if (allowmove)
             break;
         }
     }
-    if global.dir=1
+/*    if global.dir=1
     {
     image_index=0
     }
     else
     {
     image_index=1
-    }
+    }*/
 }
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///animations
+if hsp=0
+ {
+  if a&gt;=15
+   {
+    if image_index=0
+     {
+      image_index=5
+      a=0
+     }
+    else if image_index!=0 || image_index!=5
+     {
+      image_index=5
+      a=0
+     }
+    else 
+     {
+      image_index=0
+      a=0
+     }
+   }
+ }
+
+else if hsp&lt;-0.1 || hsp&gt;0.1
+ {
+  if a&gt;=4
+   {
+    if image_index&lt;4
+     {
+      image_index++
+      a=0
+     }
+    else
+     {
+      image_index=0
+      a=0
+     }
+   }
+ }
+
+a++
 </string>
           </argument>
         </arguments>
@@ -518,15 +580,15 @@ draw_sprite(sprite_index,image_index,x,y)
 draw_set_color(c_white);
 draw_set_font(info);
 
-if global.dir=1
+/*if global.dir=1
 {
 draw_sprite(spr_hat,global.hat,x-3,y-45)
 }
 else
 {
 draw_sprite(spr_hat,global.hat,x+3,y-45)
-with (spr_hat) {image_xscale=-1}
-}
+with (spr_hat) {image_xscale=-1)
+}*/
  if global.inf=1 || global.inf2=1
  {
   draw_set_color(c_red);
